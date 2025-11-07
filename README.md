@@ -32,16 +32,41 @@ https://github.com/ETML-RRY/324_inspection_git.git
 
 ### Partie 2 — Exploration de base
 
-1. Combien de branches existent dans le dépôt ? Citez-les.  
-2. Quels sont les **tags** disponibles ? A quoi correspondent-ils ?  
+1. Combien de branches existent dans le dépôt ? Citez-les.
+
+```bash
+$ git branch --all
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/experiment/dark-mode
+  remotes/origin/feature/header
+  remotes/origin/feature/login
+  remotes/origin/hotfix/typo
+  remotes/origin/main
+```
+
+2. Quels sont les **tags** disponibles ? A quoi correspondent-ils ?
+```bash
+$ git tag --list
+v0.1
+v0.2
+```
+
 3. Quelle est la **branche principale** du projet ?
+```bash
+git remote show origin | grep 'HEAD branch'
+```
 
 ### Partie 3 — Historique et commits
 
 4. Quel est le message du **premier commit** du projet ?  
-5. Trouvez le commit où une **clé API** a été ajoutée par erreur. Quel est son identifiant (hash court) ?  
+
+5. Trouvez le commit où une **clé API** a été ajoutée par erreur. Quel est son identifiant (hash court) ? 
+
 6. Quel commit a ensuite corrigé cette erreur ?  
+
 7. Trouvez le commit où le **titre de la page d'accueil** a été corrigé.  
+
 8. Quel est le message du commit qui a **ajouté le fichier `CHANGELOG.md`** et quelle commande avez-vous utilisé ?
 
 ### Partie 4 — Branches et fusions
