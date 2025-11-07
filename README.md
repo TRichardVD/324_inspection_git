@@ -60,14 +60,53 @@ git remote show origin | grep 'HEAD branch'
 ### Partie 3 — Historique et commits
 
 4. Quel est le message du **premier commit** du projet ?  
+```bash
+$ git log --reverse
+```
 
 5. Trouvez le commit où une **clé API** a été ajoutée par erreur. Quel est son identifiant (hash court) ? 
 
+```bash
+$ git log --grep="api" -i --pretty=short
+commit 1b682c91ef14cda333419e2e387a53033ae575a1
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+
+    chore(config): retire la clé API et documente la bonne pratique
+
+commit bea2d1aeaecd11e9c0af36cf6f052f65e82d36c5
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+
+    chore(config): AJOUT TEMPORAIRE d'une clé API (à retirer)
+
+
+```
+⇒ c'est `bea2d1aeaecd11e9c0af36cf6f052f65e82d36c5`
+
 6. Quel commit a ensuite corrigé cette erreur ?  
+
+=> C'est `bea2d1aeaecd11e9c0af36cf6f052f65e82d36c5` 
 
 7. Trouvez le commit où le **titre de la page d'accueil** a été corrigé.  
 
+```bash
+$ git log --grep="titre" -i --pretty=short
+commit 6317c073f7514d580522c90fa1f0f0402066a48f (origin/hotfix/typo)
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+
+    hotfix: corrige la typo 'Wolrd' dans le titre
+
+```
+
 8. Quel est le message du commit qui a **ajouté le fichier `CHANGELOG.md`** et quelle commande avez-vous utilisé ?
+
+```bash
+$ git log --grep="CHANGELOG" -i --pretty=short
+commit ed62890417d8c8fb880e55a2b8933b80b00ea1bd
+Author: Romain Rosay <romain.rosay@eduvaud.ch>
+
+    docs: ajoute un changelog de base
+
+```
 
 ### Partie 4 — Branches et fusions
 
