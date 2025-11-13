@@ -111,7 +111,16 @@ Author: Romain Rosay <romain.rosay@eduvaud.ch>
 ### Partie 4 — Branches et fusions
 
 9. Quelles branches ont été fusionnées dans `main` ?  
+
+```bash
+git branch --all --merged
+```
+
 10. Quelle branche **n'a pas été fusionnée** ? Pourquoi, selon vous ? 
+
+```bash
+git branch --all --no-merged
+```
 
 ### Partie 5 — Analyse du contenu
 
