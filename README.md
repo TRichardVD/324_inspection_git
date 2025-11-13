@@ -124,10 +124,26 @@ git branch --all --no-merged
 
 ### Partie 5 — Analyse du contenu
 
-11. Quelle est la **différence principale** entre les fichiers `index.html` dans les versions `v0.1` et `v0.2` et quelle commande permet de le voir rapidement ?  
+11. Quelle est la **différence principale** entre les fichiers `index.html` dans les versions `v0.1` et `v0.2` et quelle commande permet de le voir rapidement ? 
+```bash
+git diff v0.1 v0.2
+```
 12. Que contient la branche `feature/login` ?  
-13. Dans quelle branche a été ajouté le code pour le **mode sombre** ?  
+```bash
+git checkout feature/login && git status
+```
+13. Dans quelle branche a été ajoutée le code pour le **mode sombre** ?
+
+```bash
+ git log --all --grep="sombre"
+```
+
 14. Quelle bonne pratique de sécurité est évoquée dans les commits du fichier `config.js` ?
+
+```bash
+ git log -- config.js
+ git diff 1b682c91ef14cda333419e2e387a53033ae575a1 4d28bc59eee6c8f52277bf505642a0e8e3595674
+```
 
 ### Partie 6 — Réflexion
 
