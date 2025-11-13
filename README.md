@@ -67,17 +67,9 @@ $ git log --reverse
 5. Trouvez le commit où une **clé API** a été ajoutée par erreur. Quel est son identifiant (hash court) ? 
 
 ```bash
-$ git log --grep="api" -i --pretty=short
-commit 1b682c91ef14cda333419e2e387a53033ae575a1
-Author: Romain Rosay <romain.rosay@eduvaud.ch>
-
-    chore(config): retire la clé API et documente la bonne pratique
-
-commit bea2d1aeaecd11e9c0af36cf6f052f65e82d36c5
-Author: Romain Rosay <romain.rosay@eduvaud.ch>
-
-    chore(config): AJOUT TEMPORAIRE d'une clé API (à retirer)
-
+$ git log --grep="api" -i --oneline
+1b682c9 chore(config): retire la clé API et documente la bonne pratique
+bea2d1a chore(config): AJOUT TEMPORAIRE d'une clé API (à retirer)
 
 ```
 ⇒ c'est `bea2d1aeaecd11e9c0af36cf6f052f65e82d36c5`
@@ -89,11 +81,8 @@ Author: Romain Rosay <romain.rosay@eduvaud.ch>
 7. Trouvez le commit où le **titre de la page d'accueil** a été corrigé.  
 
 ```bash
-$ git log --grep="titre" -i --pretty=short
-commit 6317c073f7514d580522c90fa1f0f0402066a48f (origin/hotfix/typo)
-Author: Romain Rosay <romain.rosay@eduvaud.ch>
-
-    hotfix: corrige la typo 'Wolrd' dans le titre
+$ git log --grep="titre" -i --oneline
+6317c07 (origin/hotfix/typo) hotfix: corrige la typo 'Wolrd' dans le titre
 
 ```
 
@@ -114,6 +103,8 @@ Author: Romain Rosay <romain.rosay@eduvaud.ch>
 
 ```bash
 git branch --all --merged
+
+git log --graph --oneline
 ```
 
 10. Quelle branche **n'a pas été fusionnée** ? Pourquoi, selon vous ? 
@@ -122,15 +113,17 @@ git branch --all --merged
 git branch --all --no-merged
 ```
 
+Parce que clairement on a indiqué dans le nom de la branche que c'est une "experiment". Comme le nom de la branche est "experiment/dark-mode"
+
 ### Partie 5 — Analyse du contenu
 
 11. Quelle est la **différence principale** entre les fichiers `index.html` dans les versions `v0.1` et `v0.2` et quelle commande permet de le voir rapidement ? 
 ```bash
-git diff v0.1 v0.2
+git diff v0.1 v0.2 -- index.html
 ```
 12. Que contient la branche `feature/login` ?  
 ```bash
-git checkout feature/login && git status
+git branch -a -v
 ```
 13. Dans quelle branche a été ajoutée le code pour le **mode sombre** ?
 
@@ -141,13 +134,17 @@ git checkout feature/login && git status
 14. Quelle bonne pratique de sécurité est évoquée dans les commits du fichier `config.js` ?
 
 ```bash
- git log -- config.js
+ git log --online -- config.js
  git diff 1b682c91ef14cda333419e2e387a53033ae575a1 4d28bc59eee6c8f52277bf505642a0e8e3595674
 ```
+On a retirer la clé API.
 
 ### Partie 6 — Réflexion
 
-15. Pourquoi est-il important de **taguer** des versions dans un projet ?  
+15. Pourquoi est-il important de **taguer** des versions dans un projet ? 
+Cela permet d'identifier clairement les versions.
 16. Que peut-on déduire du style de travail de l'équipe à partir de cet historique GIT ?  
+Chauque fonctionnalité à sa branche dédié avec un préfix : `feature/` (ou pour d'autre type de `mofification experiment/`, `hotfix/` etc.) si c'est une fonctionnalité etc. Ils utilisent les convenions de commit conventionnel
+
 
 Bonne chance, et surtout... **ne vous perdez pas dans le log !** 😉
